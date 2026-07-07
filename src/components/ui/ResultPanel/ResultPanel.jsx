@@ -13,6 +13,20 @@ export default function ResultPanel({ result }) {
     );
   }
 
+  if (!result.success) {
+    return (
+      <div className="w-full max-w-4xl rounded-3xl border border-red-500/30 bg-red-500/10 p-8">
+        <h2 className="text-xl font-bold text-red-400">❌ Request Failed</h2>
+
+        <p className="mt-3 text-zinc-300">{result.error}</p>
+
+        <p className="mt-6 text-sm text-zinc-500">
+          Please check your backend or Mesh API connection and try again.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full max-w-4xl rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
       <div className="mb-4 flex items-center justify-between">
