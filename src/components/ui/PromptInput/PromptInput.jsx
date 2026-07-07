@@ -14,18 +14,29 @@ const suggestions = [
 export default function PromptInput() {
   const [prompt, setPrompt] = useState("");
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
 
-  async function handleSubmit() {
-    if (!prompt.trim()) return;
+async function handleSubmit() {
+  if (!prompt.trim()) return;
 
-    setLoading(true);
+  setLoading(true);
 
-    const result = await sendPrompt(prompt);
+  setStatus("🔍 Analyzing task...");
+  await new Promise((resolve) => setTimeout(resolve, 600));
 
-    console.log(result);
+  setStatus("🤖 Selecting best AI model...");
+  await new Promise((resolve) => setTimeout(resolve, 600));
 
-    setLoading(false);
-  }
+  setStatus("⚡ Generating response...");
+
+  const result = await sendPrompt(prompt);
+
+  setResult(result);
+
+  setStatus("");
+
+  setLoading(false);
+}
 
   return (
     <div className="w-full max-w-4xl rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8">
@@ -42,6 +53,12 @@ export default function PromptInput() {
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
       />
+
+      {loading && (
+        <div className="mt-4 rounded-xl border border-violet-500/20 bg-violet-500/10 p-4">
+          <p className="text-sm font-medium text-violet-300">{status}</p>
+        </div>
+      )}
 
       <div className="mt-6 flex flex-wrap gap-3">
         {suggestions.map((item) => (
