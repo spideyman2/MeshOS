@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { sendPrompt } from "@/services/mesh";
 
 const suggestions = [
   "Prepare me for Google interview",
@@ -12,6 +13,19 @@ const suggestions = [
 
 export default function PromptInput() {
   const [prompt, setPrompt] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit() {
+    if (!prompt.trim()) return;
+
+    setLoading(true);
+
+    const result = await sendPrompt(prompt);
+
+    console.log(result);
+
+    setLoading(false);
+  }
 
   return (
     <div className="w-full max-w-4xl rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8">
@@ -34,7 +48,7 @@ export default function PromptInput() {
           <button
             key={item}
             onClick={() => setPrompt(item)}
-            className="rounded-full border border-zinc-700 px-4 py-2 text-sm hover:border-violet-500 hover:bg-violet-500/10 transition"
+            className="rounded-full border border-zinc-700 px-4 py-2 text-sm transition hover:border-violet-500 hover:bg-violet-500/10"
           >
             {item}
           </button>
@@ -44,9 +58,13 @@ export default function PromptInput() {
       <div className="mt-8 flex items-center justify-between">
         <span className="text-sm text-zinc-500">{prompt.length}/1000</span>
 
-        <Button className="rounded-xl">
+        <Button
+          className="rounded-xl"
+          onClick={handleSubmit}
+          disabled={loading}
+        >
           <Sparkles className="mr-2 h-4 w-4" />
-          Execute Task
+          {loading ? "Thinking..." : "Execute Task"}
         </Button>
       </div>
     </div>
