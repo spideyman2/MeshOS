@@ -37,7 +37,14 @@ export default function ResultPanel({ result }) {
         </span>
       </div>
 
-      <div className="mb-6 grid grid-cols-3 gap-4">
+      <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="rounded-xl bg-zinc-900 p-4">
+          <p className="text-xs uppercase tracking-wide text-zinc-500">
+            Workflow
+          </p>
+
+          <p className="mt-2 font-semibold text-cyan-400">{result.workflow}</p>
+        </div>
         <div className="rounded-xl bg-zinc-900 p-4">
           <p className="text-xs uppercase tracking-wide text-zinc-500">
             Task Type
@@ -57,6 +64,14 @@ export default function ResultPanel({ result }) {
 
       <div className="rounded-2xl bg-zinc-950 p-6">
         <p className="whitespace-pre-wrap text-zinc-300">{result.response}</p>
+      </div>
+
+      <div className="mt-6 rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5">
+        <h3 className="mb-3 text-lg font-semibold text-cyan-300">
+          AI Decision
+        </h3>
+
+        <p className="text-zinc-300">{result.reason}</p>
       </div>
 
       {result.workflowSteps && (

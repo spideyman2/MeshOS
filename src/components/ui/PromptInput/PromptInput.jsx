@@ -41,11 +41,11 @@ async function handleSubmit() {
   setStatus("⚡ Generating response...");
 
   const result = await sendPrompt(prompt);
-
 setResult({
   ...result,
   task: routing.task,
   model: routing.model,
+  reason: routing.reason,
 
   workflow: workflow.workflow,
   workflowSteps: workflow.steps,
@@ -89,7 +89,7 @@ setResult({
       </p>
 
       <Textarea
-        className="mt-6 sm:mt-8 min-h-36 sm:min-h-44 rounded-2xl bg-zinc-950 border-zinc-700 rounded-2xl bg-zinc-950 border-zinc-700"
+        className="mt-6 sm:mt-8 min-h-36 sm:min-h-44 rounded-2xl border-zinc-700 bg-zinc-950"
         placeholder="Describe your task..."
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}

@@ -13,6 +13,7 @@ export function detectTask(prompt) {
     return {
       task: "Programming",
       model: "DeepSeek",
+      reason: "Programming-related keywords were detected in the prompt.",
     };
   }
 
@@ -26,6 +27,7 @@ export function detectTask(prompt) {
     return {
       task: "Research",
       model: "Gemini",
+      reason: "Research and analysis keywords were detected in the prompt.",
     };
   }
 
@@ -39,6 +41,7 @@ export function detectTask(prompt) {
     return {
       task: "Writing",
       model: "Claude",
+      reason: "Writing-related keywords were detected in the prompt.",
     };
   }
 
@@ -50,11 +53,14 @@ export function detectTask(prompt) {
     return {
       task: "Document Analysis",
       model: "Gemini",
+      reason: "Document processing keywords were detected in the prompt.",
     };
   }
 
   return {
     task: "General",
     model: "GPT",
+    reason:
+      "No specific task type was detected, so the general-purpose model was selected.",
   };
 }
