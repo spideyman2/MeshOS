@@ -29,12 +29,30 @@ export default function ResultPanel({ result }) {
 
   return (
     <div className="w-full max-w-4xl rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-      <div className="mb-4 flex items-center justify-between">
+      <div className="mb-6 flex items-center justify-between">
         <h2 className="text-xl font-bold">AI Response</h2>
 
-        <span className="rounded-full bg-violet-500/20 px-3 py-1 text-sm text-violet-300">
+        <span className="rounded-full bg-violet-500/20 px-3 py-1 text-sm font-medium text-violet-300">
           {result.model}
         </span>
+      </div>
+
+      <div className="mb-6 grid grid-cols-2 gap-4">
+        <div className="rounded-xl bg-zinc-900 p-4">
+          <p className="text-xs uppercase tracking-wide text-zinc-500">
+            Task Type
+          </p>
+
+          <p className="mt-2 font-semibold text-white">{result.task}</p>
+        </div>
+
+        <div className="rounded-xl bg-zinc-900 p-4">
+          <p className="text-xs uppercase tracking-wide text-zinc-500">
+            Selected Model
+          </p>
+
+          <p className="mt-2 font-semibold text-violet-400">{result.model}</p>
+        </div>
       </div>
 
       <div className="rounded-2xl bg-zinc-950 p-6">

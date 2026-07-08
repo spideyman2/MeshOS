@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Sparkles } from "lucide-react";
+import { detectTask } from "@/utils/modelRouter";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { sendPrompt } from "@/services/mesh";
@@ -11,7 +12,7 @@ const suggestions = [
   "Create presentation",
 ];
 
-export default function PromptInput() {
+export default function PromptInput({ setResult }) {
   const [prompt, setPrompt] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
@@ -24,14 +25,23 @@ async function handleSubmit() {
   setStatus("🔍 Analyzing task...");
   await new Promise((resolve) => setTimeout(resolve, 600));
 
-  setStatus("🤖 Selecting best AI model...");
+  // Detect task and model
+  const routing = detectTask(prompt);
+
+  console.log("Routing:", routing);
+
+  setStatus(`🤖 Selected Model: ${routing.model}`);
   await new Promise((resolve) => setTimeout(resolve, 600));
 
   setStatus("⚡ Generating response...");
 
   const result = await sendPrompt(prompt);
 
-  setResult(result);
+  setResult({
+    ...result,
+    task: routing.task,
+    model: routing.model,
+  });
 
   setStatus("");
 
