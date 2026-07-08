@@ -58,6 +58,28 @@ export default function ResultPanel({ result }) {
       <div className="rounded-2xl bg-zinc-950 p-6">
         <p className="whitespace-pre-wrap text-zinc-300">{result.response}</p>
       </div>
+
+      {result.timeline && (
+        <div className="mt-8 rounded-2xl border border-white/10 bg-zinc-900/50 p-6">
+          <h3 className="mb-6 text-lg font-semibold">Execution Timeline</h3>
+
+          <div className="space-y-5">
+            {result.timeline.map((step, index) => (
+              <div key={index} className="flex items-center gap-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/20 text-lg text-green-400">
+                  ✓
+                </div>
+
+                <div>
+                  <p className="font-medium text-white">{step.title}</p>
+
+                  <p className="text-sm text-zinc-500">{step.status}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

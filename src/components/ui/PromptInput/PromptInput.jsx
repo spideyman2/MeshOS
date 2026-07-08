@@ -37,11 +37,29 @@ async function handleSubmit() {
 
   const result = await sendPrompt(prompt);
 
-  setResult({
-    ...result,
-    task: routing.task,
-    model: routing.model,
-  });
+setResult({
+  ...result,
+  task: routing.task,
+  model: routing.model,
+  timeline: [
+    {
+      title: "Prompt Received",
+      status: "Completed",
+    },
+    {
+      title: "Task Analyzed",
+      status: "Completed",
+    },
+    {
+      title: `Model Selected (${routing.model})`,
+      status: "Completed",
+    },
+    {
+      title: "Response Generated",
+      status: "Completed",
+    },
+  ],
+});
 
   setStatus("");
 
