@@ -37,7 +37,7 @@ export default function ResultPanel({ result }) {
         </span>
       </div>
 
-      <div className="mb-6 grid grid-cols-2 gap-4">
+      <div className="mb-6 grid grid-cols-3 gap-4">
         <div className="rounded-xl bg-zinc-900 p-4">
           <p className="text-xs uppercase tracking-wide text-zinc-500">
             Task Type
@@ -59,13 +59,37 @@ export default function ResultPanel({ result }) {
         <p className="whitespace-pre-wrap text-zinc-300">{result.response}</p>
       </div>
 
+      {result.workflowSteps && (
+        <div className="mt-8 rounded-2xl border border-white/10 bg-zinc-900/50 p-6">
+          <h3 className="mb-5 text-lg font-semibold">Workflow Steps</h3>
+
+          <div className="space-y-3">
+            {result.workflowSteps.map((step, index) => (
+              <div
+                key={index}
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-3 rounded-lg bg-zinc-950 p-3"
+              >
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500/20 font-bold text-cyan-400">
+                  {index + 1}
+                </div>
+
+                <span className="text-zinc-300">{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {result.timeline && (
         <div className="mt-8 rounded-2xl border border-white/10 bg-zinc-900/50 p-6">
           <h3 className="mb-6 text-lg font-semibold">Execution Timeline</h3>
 
           <div className="space-y-5">
             {result.timeline.map((step, index) => (
-              <div key={index} className="flex items-center gap-4">
+              <div
+                key={index}
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/20 text-lg text-green-400">
                   ✓
                 </div>
