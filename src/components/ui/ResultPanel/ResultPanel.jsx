@@ -74,6 +74,31 @@ export default function ResultPanel({ result }) {
         <p className="text-zinc-300">{result.reason}</p>
       </div>
 
+      {result.agents && (
+        <div className="mt-8 rounded-2xl border border-white/10 bg-zinc-900/50 p-6">
+          <h3 className="mb-5 text-lg font-semibold">AI Agents</h3>
+
+          <div className="space-y-4">
+            {result.agents.map((agent, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-between rounded-xl bg-zinc-950 p-4"
+              >
+                <div>
+                  <h4 className="font-semibold text-white">{agent.name}</h4>
+
+                  <p className="mt-1 text-sm text-zinc-500">{agent.output}</p>
+                </div>
+
+                <span className="rounded-full bg-yellow-500/20 px-3 py-1 text-sm text-yellow-400">
+                  {agent.status}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {result.workflowSteps && (
         <div className="mt-8 rounded-2xl border border-white/10 bg-zinc-900/50 p-6">
           <h3 className="mb-5 text-lg font-semibold">Workflow Steps</h3>

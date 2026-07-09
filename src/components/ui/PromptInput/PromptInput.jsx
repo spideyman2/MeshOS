@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Sparkles } from "lucide-react";
 import { detectTask } from "@/utils/modelRouter";
 import { getWorkflow } from "@/utils/workflowEngine";
+import { getAgents } from "@/utils/agentOrchestrator";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { sendPrompt } from "@/services/mesh";
@@ -31,6 +32,10 @@ async function handleSubmit() {
 
   const workflow = getWorkflow(routing.task);
 
+  const agentData = getAgents(routing.task);
+
+  console.log("Agents:", agentData);
+
   console.log("Workflow:", workflow);
 
   console.log("Routing:", routing);
@@ -49,6 +54,8 @@ setResult({
 
   workflow: workflow.workflow,
   workflowSteps: workflow.steps,
+
+  agents: agentData.agents,
 
   timeline: [
     {
