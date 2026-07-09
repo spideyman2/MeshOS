@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Sparkles } from "lucide-react";
 import { detectTask } from "@/utils/modelRouter";
+import { demoResponse } from "@/utils/demoResponse";
 import { getWorkflow } from "@/utils/workflowEngine";
 import { getAgents } from "@/utils/agentOrchestrator";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,8 @@ const suggestions = [
   "Research latest AI news",
   "Create presentation",
 ];
+
+const DEMO_MODE = false;
 
 export default function PromptInput({ setResult }) {
   const [prompt, setPrompt] = useState("");
@@ -45,7 +48,7 @@ async function handleSubmit() {
 
   setStatus("⚡ Generating response...");
 
-  const result = await sendPrompt(prompt);
+ const result = DEMO_MODE ? demoResponse : await sendPrompt(prompt);
 setResult({
   ...result,
   task: routing.task,
