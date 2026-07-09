@@ -122,6 +122,47 @@ export default function ResultPanel({ result }) {
           </div>
         </div>
       )}
+      <div className="mt-8 rounded-2xl border border-green-500/20 bg-green-500/5 p-6">
+        <h3 className="mb-5 text-lg font-semibold text-green-300">
+          Execution Summary
+        </h3>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-zinc-500">
+              Workflow
+            </p>
+
+            <p className="mt-1 font-semibold text-white">{result.workflow}</p>
+          </div>
+
+          <div>
+            <p className="text-xs uppercase tracking-wide text-zinc-500">
+              Model
+            </p>
+
+            <p className="mt-1 font-semibold text-white">{result.model}</p>
+          </div>
+
+          <div>
+            <p className="text-xs uppercase tracking-wide text-zinc-500">
+              Agents Used
+            </p>
+
+            <p className="mt-1 font-semibold text-white">
+              {result.agents?.length || 0}
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs uppercase tracking-wide text-zinc-500">
+              Status
+            </p>
+
+            <p className="mt-1 font-semibold text-green-400">Completed</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
