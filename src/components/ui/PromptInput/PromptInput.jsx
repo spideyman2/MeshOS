@@ -37,11 +37,6 @@ async function handleSubmit() {
 
   const agentData = getAgents(routing.task);
 
-  console.log("Agents:", agentData);
-
-  console.log("Workflow:", workflow);
-
-  console.log("Routing:", routing);
 
   setStatus(`🤖 Selected Model: ${routing.model}`);
   await new Promise((resolve) => setTimeout(resolve, 600));

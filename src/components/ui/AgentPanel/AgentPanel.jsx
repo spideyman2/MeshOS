@@ -56,7 +56,7 @@ export default function AgentPanel({ agents = [] }) {
         {agentStates.map((agent, index) => (
           <div
             key={index}
-            className="flex items-center justify-between rounded-xl bg-zinc-950 p-4"
+            className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl bg-zinc-950 p-4"
           >
             <div>
               <h4 className="font-semibold text-white">{agent.name}</h4>
