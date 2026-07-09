@@ -1,164 +1,166 @@
 # MeshOS
 
-> **One Workspace. Every AI Model.**
+MeshOS is an AI Operating System that I built for the Mesh API Hackathon.
 
-MeshOS is an intelligent AI workspace powered by **Mesh API** that helps users complete real-world tasks without worrying about which AI model to use.
+The idea is simple. Instead of sending every prompt directly to an AI model, MeshOS first understands what the user wants, decides what kind of task it is, selects the best workflow, creates AI agents, and then generates the response.
 
-Instead of switching between ChatGPT, Claude, Gemini, DeepSeek, and other AI models, users simply describe what they want to accomplish. MeshOS intelligently selects the most suitable model through Mesh API, executes the request, and presents the result in a clean, structured workspace.
-
----
-
-# 🚀 Features
-
-### 🤖 Smart Model Routing (Auto Mode)
-Automatically detects the user's task and selects the most suitable AI model.
-
-Examples:
-- Coding → DeepSeek
-- Writing → Claude
-- Long documents → Gemini
-- General tasks → GPT
+For example, if someone asks a programming question, MeshOS detects that it's a coding task, chooses the programming workflow, assigns the required agents, and finally sends the request to the AI.
 
 ---
 
-### 🎛 Manual Model Selection
+## Why I built this
 
-Prefer a specific model?
+Nowadays there are many AI models and each one is good at different things.
 
-Users can manually choose any supported model available through Mesh API.
+Instead of making users choose a model every time, I wanted to build something that can make those decisions automatically.
 
----
-
-### ⚖ Compare Mode *(Coming Soon)*
-
-Run the same prompt across multiple AI models and compare their responses side by side.
+That's how MeshOS was created.
 
 ---
 
-### 📂 Workflow Templates
+## Features
 
-MeshOS provides ready-made workflows for common tasks.
-
-- 💼 Interview Preparation
-- 🔍 Research Assistant
-- 📄 PDF Analyzer
-- ✍ AI Writer
-- 💻 Code Assistant
-
----
-
-### 📚 Task History *(Coming Soon)*
-
-Store and revisit previous AI conversations and generated results.
-
----
-
-## 🛠 Tech Stack
-
-### Frontend
-
-- React
-- Vite
-- Tailwind CSS
-- shadcn/ui
-- Framer Motion
-
-### Backend
-
-- Express.js
-- Node.js
-
-### AI Gateway
-
-- Mesh API
+- Automatic task detection
+- AI decision engine
+- Workflow selection
+- AI agent orchestration
+- Execution timeline
+- Document analysis
+- Research workspace
+- Planner
+- Reports dashboard
+- Compare AI page
+- Responsive UI
+- Mesh API integration
 
 ---
 
-# 🏗 Architecture
+## How it works
 
-```text
-                 User
-                  │
-                  ▼
-             MeshOS UI
-                  │
-                  ▼
-        Workflow Selection
-                  │
-                  ▼
-        Smart Model Router
-                  │
-                  ▼
-             Mesh API
-                  │
-                  ▼
-        Selected AI Model
-                  │
-                  ▼
-        Structured Response
+```
+User Prompt
+      ↓
+Task Detection
+      ↓
+AI Decision
+      ↓
+Workflow Selection
+      ↓
+AI Agents
+      ↓
+Mesh API
+      ↓
+Response
 ```
 
 ---
 
-# 🎯 Why MeshOS?
+## Tech Stack
 
-Choosing the right AI model can be confusing.
+Frontend
 
-MeshOS simplifies the experience by providing:
-
-- One workspace
-- One API integration
-- Multiple AI models
-- Intelligent model selection
-- Beautiful response formatting
-
-Users focus on their work.
-
-MeshOS handles the AI.
-
----
-
-# 🛣 Roadmap
-
-## ✅ Phase 1 (Completed)
-
-- React + Vite setup
+- React
+- Vite
 - Tailwind CSS
-- shadcn/ui
-- Dashboard UI
-- Navbar
-- Sidebar
-- Prompt Input
-- Responsive Layout
+
+Backend
+
+- Express.js
+- Node.js
+
+AI
+
+- Mesh API
+- Gemini 2.5 Flash
 
 ---
 
-## 🚧 Phase 2 (In Progress)
+## Folder Structure
 
-- Express Backend
-- Mesh API Integration
-- Smart Model Routing
-- Execute Endpoint
+```
+src
+ ├── components
+ ├── pages
+ ├── services
+ ├── utils
 
----
-
-## 📅 Upcoming
-
-- Manual Model Selection
-- Compare Mode
-- Workflow Templates
-- Task History
-- Export Results
-- Deployment
+backend
+```
 
 ---
 
-# 📸 Preview
+## Running the project
 
-UI screenshots will be added as development progresses.
+Clone the repository
+
+```bash
+git clone YOUR_REPOSITORY
+```
+
+Install packages
+
+```bash
+npm install
+```
+
+Start frontend
+
+```bash
+npm run dev
+```
+
+Start backend
+
+```bash
+cd backend
+npm install
+npm run dev
+```
 
 ---
 
-# 📄 License
+## Environment Variables
 
-MIT License
+Create a `.env` file inside the backend folder.
+
+```env
+MESH_API_KEY=YOUR_API_KEY
+MODEL=google/gemini-2.5-flash
+PORT=5000
+```
+
+---
+
+## What I learned
+
+While building MeshOS I learned about
+
+- AI routing
+- Multi-agent systems
+- API integration
+- React state management
+- Backend development with Express
+- Project architecture
+
+I also learned how important it is to build reusable components instead of writing everything inside one file.
+
+---
+
+## Future Plans
+
+If I continue working on this project, I want to add
+
+- Real multi-model routing
+- PDF uploads
+- Voice support
+- AI memory
+- Streaming responses
+- Team collaboration
+
+---
+
+## Author
+
+Wasim
+
+Built for the Mesh API Hackathon.
